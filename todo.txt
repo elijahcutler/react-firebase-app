@@ -1,0 +1,23 @@
+### React-Firebase-App ("FireChat") Planning
+
+splash page
+	login
+	create account (email & password via firebase)
+		email
+		username
+		password
+	
+home page
+	current chat list
+	settings
+	
+chat
+	messages
+		sending, failed, delivered, optional read
+	text input
+	
+	
+	
+### Stretch Goals	
+	media upload
+	
