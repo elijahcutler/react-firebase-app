@@ -7,6 +7,7 @@ import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Home from "./Components/Home";
 import Settings from "./Components/Settings";
+import Footer from "./Components/Footer";
 import { PublicRoute, PrivateRoute, DynamicRoute } from "./Components/Routes";
 
 class App extends Component {
@@ -20,9 +21,8 @@ class App extends Component {
               authedComponent={props => <Home />}
               unauthedComponent={props => <Splash />}
             />
-            <PublicRoute exact path="/login" component={props => <Login />} />
-            <PublicRoute exact path="/signup" component={props => <Signup />} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );
