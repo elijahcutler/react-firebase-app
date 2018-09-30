@@ -15,8 +15,8 @@ export function PrivateRoute({ component: Component, ...props }) {
         firebase.auth().currentUser ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
-        )
+            <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+          )
       }
     />
   );
@@ -27,6 +27,7 @@ export function DynamicRoute({
   unauthedComponent: UnauthedComponent,
   ...props
 }) {
+
   return (
     <Route
       {...props}
@@ -35,8 +36,8 @@ export function DynamicRoute({
         firebase.auth().currentUser ? (
           <AuthedComponent {...props} />
         ) : (
-          <UnauthedComponent {...props} />
-        )
+            <UnauthedComponent {...props} />
+          )
       }
     />
   );

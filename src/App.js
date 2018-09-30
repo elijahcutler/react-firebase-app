@@ -9,8 +9,21 @@ import Home from "./Components/Home";
 import Settings from "./Components/Settings";
 import Footer from "./Components/Footer";
 import { PublicRoute, PrivateRoute, DynamicRoute } from "./Components/Routes";
+import firebase from "firebase";
+
 
 class App extends Component {
+
+  state = {
+    user: false
+  }
+
+  componentDidMount = () => {
+    firebase.auth().onAuthStateChanged(user => {
+      this.setState({ user: !!user })
+    });
+  };
+
   render() {
     return (
       <Router>

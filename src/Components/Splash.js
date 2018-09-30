@@ -66,20 +66,22 @@ export default class extends Component {
             <h1 style={styles.titleText}>FireChat</h1>
             <h2>Chat with peers about whatever you want.</h2>
           </div>
-          <div style={styles.authHeaderText}>
-            {this.state.loginShown ? (
-              <h1>Login to existing account</h1>
-            ) : (
-              <h1>Create new account</h1>
-            )}
-          </div>
-          <div style={styles.authFields}>
-            {this.state.loginShown ? <Login /> : <Signup />}
-          </div>
+          {/* Change to full-width tabs instead of buttons */}
           <div style={styles.authButtons}>
             <button onClick={this.loginClick}>Login</button>
             <button onClick={this.signupClick}>Sign Up</button>
           </div>
+          <div style={styles.authHeaderText}>
+            {this.state.loginShown ? (
+              <h1>Login to existing account</h1>
+            ) : (
+                <h1>Create new account</h1>
+              )}
+          </div>
+          <div style={styles.authFields}>
+            {this.state.loginShown ? <Login /> : <Signup />}
+          </div>
+
         </div>
       </div>
     );
