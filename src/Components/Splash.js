@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
-import Background from "../assets/images/background.png";
 
 const styles = {
   titleDiv: {
@@ -20,7 +19,7 @@ const styles = {
   capsuleDiv: {
     flex: 1,
     backgroundColor: "yellow",
-    backgroundImage: "linear-gradient(to bottom right, red, yellow)",
+    backgroundImage: "linear-gradient(to bottom right, blue, yellow)",
     height: "100vh",
     backgroundSize: "cover"
   },
