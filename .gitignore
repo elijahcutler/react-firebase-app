@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+/storyboard
 
 # production
 /build

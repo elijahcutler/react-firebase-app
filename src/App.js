@@ -8,19 +8,20 @@ import Signup from "./Components/Signup";
 import Home from "./Components/Home";
 import Settings from "./Components/Settings";
 import Footer from "./Components/Footer";
+import Header from "./Components/Header";
+import Error from "./Components/Error";
 import { PublicRoute, PrivateRoute, DynamicRoute } from "./Components/Routes";
 import firebase from "firebase";
 
-
 class App extends Component {
-
   state = {
     user: false
-  }
+  };
 
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged(user => {
-      this.setState({ user: !!user })
+      this.setState({ user: !!user });
+      console.log(this.state.user);
     });
   };
 
@@ -28,14 +29,16 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <div>{this.state.user === true && <Header />}</div>
           <Switch>
             <DynamicRoute
               path="/"
+              authenticated={this.state.user}
               authedComponent={props => <Home />}
               unauthedComponent={props => <Splash />}
             />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
     );
