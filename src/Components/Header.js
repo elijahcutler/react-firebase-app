@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import firebase from "firebase";
+import Button from "@material-ui/core/Button";
 
 const styles = {
   headerDiv: {
@@ -31,7 +32,9 @@ export default class extends Component {
     return (
       <div style={styles.headerDiv}>
         <div style={styles.header}>
-          <button onClick={this.logout}>Log Out</button>
+          <Button variant="contained" color="primary" onClick={this.logout}>
+            Log Out
+          </Button>
         </div>
       </div>
     );
