@@ -6,10 +6,9 @@ const styles = {
   footer: {
     width: "100%",
     positon: "absolute",
-    bottom: "0",
-    height: "60px",
-    background: "#a442f4",
-    zIndex: "10"
+    padding: "1rem",
+    backgroundColor: "#a442f4",
+    textAlign: "center"
   }
 };
 
@@ -17,9 +16,7 @@ export default class extends Component {
   render() {
     return (
       <div style={styles.footer}>
-        <div style={styles.footerDiv}>
-          <h4>Privacy Policy</h4>
-        </div>
+        <h2>Privacy Policy</h2>
       </div>
     );
   }

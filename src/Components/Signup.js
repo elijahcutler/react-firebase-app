@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Error from "./Error";
 import firebase from "firebase";
 
 const styles = {
@@ -13,23 +14,24 @@ export default class extends Component {
     username: "",
     email: "",
     password: "",
-    passwordVerify: ""
+    passwordVerify: "",
+    errorMessage: ""
   };
 
-  onUsernameChange = (e) => {
-    this.setState({ username: e.target.value })
+  onUsernameChange = e => {
+    this.setState({ username: e.target.value });
   };
 
-  onEmailChange = (e) => {
-    this.setState({ email: e.target.value })
+  onEmailChange = e => {
+    this.setState({ email: e.target.value });
   };
 
-  onPasswordChange = (e) => {
-    this.setState({ password: e.target.value })
+  onPasswordChange = e => {
+    this.setState({ password: e.target.value });
   };
 
-  onPasswordVerifyChange = (e) => {
-    this.setState({ passwordVerify: e.target.value })
+  onPasswordVerifyChange = e => {
+    this.setState({ passwordVerify: e.target.value });
   };
 
   signup = () => {
@@ -39,46 +41,72 @@ export default class extends Component {
     const passwordVerify = this.state.passwordVerify;
 
     if (
-      (username.length
-        && email.length
-        && password.length
-        && passwordVerify.length)
+      username.length &&
+      email.length &&
+      password.length &&
+      passwordVerify.length
     ) {
-
-      if (password === passwordVerify) {
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
-          // Handle Errors here.
-          var errorCode = error.code;
-          var errorMessage = error.message;
-          // ...
-          console.log(error.code);
-          console.log(error.message);
-        });
+      if (password.length < 6) {
+        if (password === passwordVerify) {
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .catch(error => {
+              this.setState({ errorMessage: error.message });
+            });
+        } else {
+          //passwords don't match
+          this.setState({
+            errorMessage: "Please verify that the passwords you entered match."
+          });
+        }
       } else {
-        console.log("Error. Please verify that the passwords you entered match.");
+        // password < 6 characters
+        this.setState({
+          errorMessage:
+            "Please make sure your password is at least 6 characters long."
+        });
       }
     } else {
-      console.log("Error. Please make sure all fields are filled.");
+      //at least one field is empty
+      this.setState({
+        errorMessage:
+          "Please make sure that all fields have been filled correctly."
+      });
     }
-
   };
-
 
   render() {
     return (
       <div>
         <div style={styles.inputDiv}>
           <div>
-            <input type="text" placeholder="username" onChange={this.onUsernameChange} />
+            <input
+              type="text"
+              placeholder="username"
+              onChange={this.onUsernameChange}
+            />
             <br />
-            <input type="text" placeholder="e-mail address" onChange={this.onEmailChange} />
+            <input
+              type="text"
+              placeholder="e-mail address"
+              onChange={this.onEmailChange}
+            />
             <br />
-            <input type="text" placeholder="password" onChange={this.onPasswordChange} />
+            <input
+              type="text"
+              placeholder="password"
+              onChange={this.onPasswordChange}
+            />
             <br />
-            <input type="text" placeholder="verify password" onChange={this.onPasswordVerifyChange} />
+            <input
+              type="text"
+              placeholder="verify password"
+              onChange={this.onPasswordVerifyChange}
+            />
           </div>
           <div>
-            <p>Your password should be at least 6 characters long.</p>
+            <Error errorMessage={this.state.errorMessage} />
           </div>
         </div>
         <div>

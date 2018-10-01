@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import firebase from "firebase";
+
+const styles = {
+  errorDiv: {
+    backgroundColor: "red"
+  }
+};
 
 export default class extends Component {
-    state = {
-        error: ""
-    }
-
-    render() {
-        return (
-            <div></div>
-        );
-    }
-
+  render() {
+    return (
+      <div style={styles.errorDiv}>
+        {this.props.errorMessage && <p>{this.props.errorMessage}</p>}
+      </div>
+    );
+  }
 }
