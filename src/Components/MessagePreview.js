@@ -22,18 +22,13 @@ const styles = {
   }
 };
 
-const userTest1 = {
-  recieved: "0",
-  friend: "joeschmoe12",
-  lastMessage:
-    "Hey man, hope you have been having a good day today. What are we doing this weekend?"
-};
-
-const userTest2 = {
-  recieved: "1",
-  friend: "demitrius47",
-  lastMessage: "man if you don't shut yo squidward house lookin' head up "
-};
+const testArray = [
+  {
+    recieved: 1,
+    friend: "demitrius47",
+    lastMessage: "man if you don't shut yo squidward house lookin' head up"
+  }
+];
 
 // var user = {
 //   username: "",
@@ -50,14 +45,14 @@ export default class extends Component {
   render() {
     return (
       <div>
-        <div style={styles.container}>
-          <p style={styles.friendP}>{userTest1.friend}</p>
-          <p style={styles.lastMessageP}>{userTest1.lastMessage}</p>
-        </div>
-        <div style={styles.container}>
-          <p style={styles.friendP}>{userTest2.friend}</p>
-          <p style={styles.lastMessageP}>{userTest2.lastMessage}</p>
-        </div>
+        {testArray.map(thread => {
+          return (
+            <div style={styles.container}>
+              <p style={styles.friendP}>{thread.friend}</p>
+              <p style={styles.lastMessageP}>{thread.lastMessage}</p>
+            </div>
+          );
+        })}
       </div>
     );
   }
