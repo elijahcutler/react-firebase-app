@@ -46,7 +46,7 @@ export default class extends Component {
       password.length &&
       passwordVerify.length
     ) {
-      if (password.length < 6) {
+      if (password.length >= 6) {
         if (password === passwordVerify) {
           firebase
             .auth()

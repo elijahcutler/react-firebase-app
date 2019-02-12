@@ -5,23 +5,23 @@ const styles = {
   lastMessageP: {}
 };
 
-var user = {
-  username: "",
-  currentRoom: "",
-  message: ""
-};
+// var user = {
+//   username: "",
+//   currentRoom: "",
+//   message: ""
+// };
 
-var room = {
-  friend: "",
-  lastMessage: ""
-};
+// var room = {
+//   friend: "",
+//   lastMessage: ""
+// };
 
 export default class extends Component {
   render() {
     return (
       <div>
         <div>
-          <h1>Current Room</h1>
+          <h1>Friend's Username</h1>
         </div>
         <div />
       </div>

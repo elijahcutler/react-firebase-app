@@ -22,11 +22,20 @@ const styles = {
   }
 };
 
-const testArray = [
+const squidArray = [
   {
     recieved: 1,
     friend: "demitrius47",
     lastMessage: "man if you don't shut yo squidward house lookin' head up"
+  }
+];
+
+const testArray = [
+  {
+    id: "foo",
+    recieved: 1,
+    friend: "Tester",
+    lastMessage: "Test"
   }
 ];
 
@@ -42,14 +51,18 @@ const testArray = [
 // };
 
 export default class extends Component {
+  loadRoom = id => {};
+
   render() {
     return (
       <div>
         {testArray.map(thread => {
           return (
-            <div style={styles.container}>
-              <p style={styles.friendP}>{thread.friend}</p>
-              <p style={styles.lastMessageP}>{thread.lastMessage}</p>
+            <div onClick={this.loadRoom(thread.id)}>
+              <div style={styles.container}>
+                <p style={styles.friendP}>Friend: {thread.friend}</p>
+                <p style={styles.lastMessageP}>Message: {thread.lastMessage}</p>
+              </div>
             </div>
           );
         })}
